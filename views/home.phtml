@@ -1,0 +1,22 @@
+<?php
+
+
+$articleList = getArticleList();
+
+?>
+
+<?php
+include 'header.phtml';
+?>
+
+<ul>
+	<?php foreach ($articleList as $article): ?>
+		<h3><?= cleanText($article['title']) ?></h3>
+		<div>
+			<?= cleanText($article['content']) ?>
+		</div>
+	<?php endforeach ?>
+</ul>
+
+</body>
+</html>

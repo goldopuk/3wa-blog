@@ -1,0 +1,39 @@
+<?php
+include 'header.phtml';
+?>
+
+<h2>Rediger un nouvel article</h2>
+
+<form action="addArticle.php" method="post">
+
+	<label>Titre<input type="text" name="title"></label>
+	<label>Contenu<textarea name="content"></textarea></label>
+
+
+	<?php
+	$categoryList = getCategoryList();
+	?>
+	<select name="category_id">
+		<option></option>	
+		<?php foreach ($categoryList as $category): ?>
+			<option value="<?= $category['id'] ?>"><?= $category['name'] ?></option>
+		<?php endforeach ?>
+	</select>	
+
+	<?php
+	$authorList = getAuthorList();
+	?>
+	<select name="author_id">
+	<option></option>
+		<?php foreach ($authorList as $author): ?>
+			<option value="<?= $author['id'] ?>"><?= $author['firstname'] ?><?= $author['lastname'] ?></option>
+		<?php endforeach ?>
+	</select>
+
+
+	<button type="submit">Sauver</button>
+</form>
+
+
+</body>
+</html>
