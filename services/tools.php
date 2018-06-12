@@ -18,5 +18,17 @@ function writeLog($thing) {
 }
 
 function cleanText($text) {
-	return htmlentities($text);
+	$text = strip_tags($text);
+	$text = htmlentities($text);
+
+	return $text;
+}
+
+function myGet($key) {
+
+	if ( isset($_GET[$key]) == false) {
+		return null;
+	}
+
+	return $_GET[$key];
 }

@@ -2,9 +2,41 @@
 include 'header.phtml';
 ?>
 
+<?php
+$articleList = getArticleList();
+?>
+
 <h2>Admin</h2>
 
 <a href="newArticle.php">Rédiger un article</a>
+
+
+<table>
+	<tr>
+		<th>Titre</th>
+		<th>Contenu</th>
+		<th>Auteur</th>
+		<th>Catégorie</th>
+		<th>Actions</th>
+	</tr>
+	<?php foreach ($articleList as $article): ?>
+		<tr>
+			<td><?= cleanText($article['title']) ?></td>
+			<td><?= cleanText($article['content']) ?></td>
+			<td><?= $article['category_id'] ?></td>
+			<td><?= $article['author_id'] ?></td>
+			<td>
+				<a href="editArticle.php?id=<?= $article['id'] ?>">edit</a>
+				<form>
+					<input type="hidden" value="<?= $article['content'] ?>">
+					<button type="submit" />
+				</form>
+			</td>
+
+		</tr>
+	<?php endforeach ?>
+</table>
+
 
 </body>
 </html>

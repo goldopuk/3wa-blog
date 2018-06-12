@@ -1,6 +1,5 @@
 <?php
 
-
 $articleList = getArticleList();
 
 ?>
@@ -9,12 +8,15 @@ $articleList = getArticleList();
 include 'header.phtml';
 ?>
 
+<h2>Liste des articles</h2>
 <ul>
 	<?php foreach ($articleList as $article): ?>
-		<h3><?= cleanText($article['title']) ?></h3>
-		<div>
-			<?= cleanText($article['content']) ?>
-		</div>
+		<li>
+			<h3><?= cleanText($article['title']) ?></h3>
+			<div>
+				<?= cleanText($article['content']) ?>
+			</div>
+		</li>
 	<?php endforeach ?>
 </ul>
 

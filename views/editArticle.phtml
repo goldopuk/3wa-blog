@@ -1,0 +1,48 @@
+<?php
+include 'header.phtml';
+?>
+
+<h2>Edition d'un article</h2>
+
+<form action="updateArticle.php" method="post">
+
+	<label>Titre<input type="text" name="title" value="<?= $article['title']?>"></label>
+	<label>Contenu<textarea name="content"><?= $article['content']?></textarea></label>
+	<input type="hidden" name="article_id" value="<?= $article['id'] ?>">
+
+	<?php
+	$categoryList = getCategoryList();
+	?>
+	<select name="category_id">
+		<option></option>	
+		<?php foreach ($categoryList as $category): ?>
+			<option value="<?= $category['id'] ?>" <?= $article['category_id'] == $category['id']  ? 'selected' : '' ?>>
+				<?= $category['name'] ?>
+			</option>
+		<?php endforeach ?>
+	</select>	
+
+	<?php
+	$authorList = getAuthorList();
+	?>
+	<select name="author_id">
+		<option></option>
+		<?php foreach ($authorList as $author): ?>
+			<option value="<?= $author['id'] ?>" <?= $article['author_id'] == $author['id']  ? 'selected' : '' ?>>
+				<?= $author['firstname'] ?><?= $author['lastname'] ?>
+			</option>
+		<?php endforeach ?>
+	</select>
+
+
+	<button type="submit">Sauver</button>
+</form>
+
+<script
+	  src="https://code.jquery.com/jquery-3.3.1.js"
+	  integrity="sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60="
+	  crossorigin="anonymous"></script>
+	  
+<script src="js/editArticle.js"></script>
+</body>
+</html>
